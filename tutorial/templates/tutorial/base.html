@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="Fr">
+<head>
+  {% load fontawesome %}
+    <meta charset="utf-8">
+  {% fontawesome_stylesheet %}
+    <title>
+        Forum
+
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+
+    <!-- Le styles -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+     <script src="{% static '/js/tinymce/tinymce.min.js' %}"></script>
+     <script type="text/javascript" src="{% static '/js/tinymce/custom.js' %}" ></script>
+
+    <!-- Load jQuery
+    <script type="text/javascript" src="js/jquery/jquery-3.2.0.js"></script>-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+
+
+    <!-- Load WysiBB JS and Theme
+
+
+ -->
+    <style>
+        .custom-toggler.navbar-toggler {
+            border-color: rgb(255,255,255);
+        }
+        .custom-toggler .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
+        .modal-lg {
+            max-width: 900px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-expand-lg fixed-top "  style="background: #084561;border-bottom: 3px solid #f8ad32; color : #f2f2f2">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="http://enockmambou.net/forum//img/Supdeco.png" style="width:35px; height:35px;" alt="logo"></a>
+        <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        {% load fontawesome %}
+            {% if user.is_authenticated %}
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+
+                <ul class="navbar-nav ml-auto" id="">
+                  <li class="nav-item">
+                    <a href="{% url 'home' %}" class="nav-link{% if request.resolver_match.view_name == 'home' %} active{% endif %}">Accueil</a>
+                  </li>
+                          <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            {% if user.user_profil.avatar %}
+                              <img src="{{ user.user_profil.avatar.url }}" class="rounded-circle align-self-center mr-2" style="width: 32px;">
+                            {% else %}
+                              <i class="far fa-user-circle fa-lg rounded-circle align-self-center mr-2" style="width: 32px;"></i>
+                            {% endif %}
+                        </a>
+                        <div class="dropdown-menu">
+                             <a href="{% url 'profil' id=user.pk %}" class="dropdown-item-text mb-0" style="color:black !important">{% fontawesome_icon 'user'  %} {{ user.user_profil.prenom  }}  {{ user.user_profil.nom  }}</a>
+                           <!-- <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" style="color:black !important">{% fontawesome_icon 'cog'  %} Mes paramètres</a>
+                           --> <div class="dropdown-divider"></div>
+                            <a href="{% url 'logout' %}" class="dropdown-item" style="color:black !important">{% fontawesome_icon 'sign-out'  %} Deconnexion</a>
+
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        {% else %}
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+
+                <ul class="navbar-nav ml-auto" id="navigation">
+                  <li class="nav-item">
+                                <a href="{% url 'home' %}" class="nav-link{% if request.resolver_match.view_name == 'home' %} active{% endif %}">Accueil</a>
+                              </li>
+                    <!-- Dropdown -->
+
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="nav-link">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'signup' %}" class="nav-link">Inscription</a>
+                    </li>
+
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+
+</nav>
+    <main role="main" class="container">
+      {% if errors %}
+        {% for error in errors %}
+          <div class="alert alert-danger" role="alert">
+            <p class="mb-3">{{ error.message }}</p>
+            {% if error.debug %}
+              <pre class="alert-pre border bg-light p-2"><code>{{ error.debug }}</code></pre>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+      {% block content %}{% endblock %}
+    </main>
+  <!-- Footer -->
+            <footer class="footer container-fluid pl-30 pr-30">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p class="text-center">2019 &copy; <a href="http://enockmambou.net/" target="_blank">Enock Mambou</a></p>
+                    </div>
+                </div>
+            </footer>
+            <!-- /Footer -->
+  </body>
+
+</html>

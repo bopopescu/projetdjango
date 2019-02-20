@@ -1,0 +1,144 @@
+body {
+  padding-top: 4.5rem;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.alert-pre {
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+@media screen and (max-width: 970px) {
+
+    #catnumber{
+        visibility: hidden;
+        clear: both;
+        float: left;
+        margin: 10px auto 5px 20px;
+        width: 28%;
+        display: none;
+    }
+
+    .topicslinks:link, .topicslinks:visited {
+
+        padding: 0 !important;
+
+    }
+    .lastmessage {
+        margin-top: 0;
+        margin-bottom: 0rem;
+    }
+
+
+}
+
+
+.category-forum__top {
+    width: 100%;
+    display: table;
+    padding: 8px 8px 0;
+    text-decoration: none;
+}
+
+.category-forum__top:link, .category-forum__top:visited {
+
+  color: rgba(0,0,0,.92);
+
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+.category-forum__top:hover, .category-forum__top:active {
+  background-color: #b3b3b3;
+}
+
+.category-forum {
+    background: #ececec;
+    border-bottom: 3px solid #696969;
+    font-size: 14px;
+        margin-top: 10px;
+          height: 200px;
+    min-height: 200px;
+
+
+
+}
+
+.category-forum2 {
+    background: #ececec;
+    border-bottom: 3px solid #696969;
+    font-size: 14px;
+        margin-top: 10px;
+
+    padding-top: 10px;
+
+
+}
+
+.lien_categorie{
+  padding: 10px 15px;
+}
+
+.category-forum__description {
+    color: #565656;
+}
+
+.category-forum__bottom {
+    display: block;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 8px 8px;
+   color: rgba(0,0,0,.92);
+   text-decoration: none;
+
+}
+
+.category-forum__bottom:hover, .category-forum__bottom:active {
+  background-color: #b3b3b3;
+  color: rgba(0,0,0,.92);
+}
+
+.topicslinks:link, .topicslinks:visited {
+    display: block;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 8px 8px;
+   color: rgba(0,0,0,.92);
+   text-decoration: none;
+}
+
+
+.panel-default>.panel-heading{
+	background-color : #f5f5f5;
+}
+.panel-heading, .panel-body{
+  padding:10px;
+}
+.panel{
+  border : 1px solid #dddddd;
+}
+
+.info_compte
+{
+  margin : 5px 15px 15px 1px;
+  padding : 5px 10px 15px;
+  border : 1px solid #80808047;
+  box-shadow: 2px 5px 8px #888888;
+
+
+}
+.bg-dark{
+  background-color : #084561 !important;
+}

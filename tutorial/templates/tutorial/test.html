@@ -1,0 +1,21 @@
+{% extends "tutorial/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load fontawesome %}
+<section style="margin-top: 10px;">
+    Vous êtes ici : <a href="{% url 'home'  %}"> {% fontawesome_icon 'home' %}</a>
+    {% fontawesome_icon 'angle-right'  %}  <a href="{% url 'categories' pk=listforum.categorie.id %}">{{listforum.categorie.categorie_nom}}</a>
+    {% fontawesome_icon 'angle-right'  %} <strong>{{listforum.forum_nom}}</strong>
+    <hr>
+</section>
+<form action=""  method="post">
+    {% csrf_token %}
+    {{sujetform |crispy}}
+    {{ form.as_p }}
+    <input type="submit" value="envoyer" class="btn btn-primary" />
+
+</form>
+
+
+
+{% endblock %}
